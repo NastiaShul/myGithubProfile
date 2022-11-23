@@ -1,0 +1,218 @@
+/*nullstyle*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  font-size: 14px;
+  color: #000000;
+}
+
+.container {
+  max-width: 1100px;
+  padding: 0 15px;
+  margin: 0 auto;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.header {
+  margin: 0 0 50px 0;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+.header__container {
+  padding: 15px 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header__icon {
+  margin: 0 15px 0 0;
+}
+.header__tittle {
+  font-size: 24px;
+  font-weight: bold;
+}
+@media (max-width: 575px) {
+  .header__tittle {
+    font-size: 15px;
+  }
+}
+
+.page__my-profile {
+  margin: 0 0 50px 0;
+}
+.my-profile__name {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+.my-profile__nickname {
+  color: #bec0c9;
+  font-size: 20px;
+  margin: 0 0 15px 0;
+}
+.my-profile__role {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+}
+.my-profile__contacts div:not(:last-child) {
+  margin: 0 0 10px 0;
+}
+.my-profile__contacts img {
+  width: 15px;
+  opacity: 0.7;
+}
+
+.repos__btn button {
+  background-color: #F3F4F6;
+  padding: 5px 16px;
+  line-height: 130%;
+  font-weight: bold;
+  border: 1px solid #a5a8b3;
+  border-radius: 6px;
+  margin: 0 0 20px 0;
+}
+.repos__tittle {
+  margin: 0 0 20px 0;
+}
+.repos__tittle img {
+  width: 15px;
+  opacity: 0.6;
+  margin: 0 8px 0 0;
+}
+.repos__item {
+  padding: 20px 0;
+}
+
+.repo {
+  border-top: 1px solid #dddfe9;
+}
+.repo:last-child {
+  border-bottom: 1px solid #dddfe9;
+}
+.repo__name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #5894ee;
+}
+.repo p {
+  margin: 15px 0 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  color: #a5a8b3;
+}
+.repo__update {
+  margin: 0 10px 0 0;
+}
+.hide {
+  display: none;
+}
+
+.active {
+  display: block;
+}

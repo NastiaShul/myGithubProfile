@@ -1,0 +1,157 @@
+@import "_nullstyle.scss";
+
+body{
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	font-size: 14px;
+	color: #000000;
+}
+
+.container{
+	max-width: 1100px;
+	padding: 0 15px;
+	margin: 0 auto;
+	box-sizing: content-box;
+}
+
+//********************************
+.header {
+	margin: 0 0 50px 0;
+	background-color: #000000;
+	color: #FFFFFF;
+	&__container {
+		padding: 15px 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__icon {
+		margin: 0 15px 0 0;
+	}
+
+	&__tittle {
+		font-size: 24px;
+		font-weight: bold;
+		@media (max-width: 575px) {
+			font-size: 15px;
+		}
+	}
+}
+//********************************
+.page {
+	&__my-profile {
+		margin: 0 0 50px 0;
+	}
+	&__repos {
+	}
+}
+//*********************************
+
+.my-profile {
+	&__container {
+	}
+
+	&__name {
+		font-size: 30px;
+		font-weight: bold;
+		margin: 0 0 5px 0;
+	}
+
+	&__nickname {
+		color: #bec0c9;
+		font-size: 20px;
+		margin: 0 0 15px 0;
+	}
+
+	&__role {
+		font-size: 18px;
+		margin: 0 0 20px 0;
+	}
+
+	&__contacts {
+		div{
+			&:not(:last-child){
+				margin: 0 0 10px 0;
+			}
+		}
+		img{
+			width: 15px;
+			opacity: 0.7;
+		}
+	}
+}
+
+.contacts {
+
+	&__email {
+	}
+
+	&__social {
+	}
+}
+
+//*************************************
+
+.repos {
+	
+	&__btn {
+		button{
+			background-color: #F3F4F6;
+			padding: 5px 16px;
+			line-height: 130%;
+			font-weight: bold;
+			border: 1px solid #a5a8b3;
+			border-radius: 6px;
+			margin: 0 0 20px 0;
+		}
+	}
+
+	&__tittle{
+		margin: 0 0 20px 0;
+		img{
+			width: 15px;
+			opacity: 0.6;
+			margin: 0 8px 0 0;
+		}
+	}
+	&__item {	
+		padding: 20px 0;
+	}
+}
+
+.repo {
+		border-top: 1px solid #dddfe9;
+	&:last-child{
+		border-bottom: 1px solid #dddfe9;
+	}
+	&__name {
+		font-size: 20px;
+		font-weight: 600;
+		color: #5894ee;	
+	}
+
+	p{
+		margin: 15px 0 0 0;
+		display: flex;
+		align-items: center;
+		font-size: 12px;
+		color: #a5a8b3;
+	}
+
+	&__update {
+		margin: 0 10px 0 0;
+	}
+
+	&__date{
+	}
+}
+
+.hide{
+	display: none;
+}
+
+.active{
+	display: block;
+}
