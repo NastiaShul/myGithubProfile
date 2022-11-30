@@ -108,6 +108,11 @@ body {
           box-sizing: content-box;
 }
 
+a:hover {
+  text-decoration: underline;
+  color: #5894ee;
+}
+
 .header {
   margin: 0 0 50px 0;
   background-color: #000000;
@@ -211,8 +216,4 @@ body {
 }
 .hide {
   display: none;
-}
-
-.active {
-  display: block;
 }

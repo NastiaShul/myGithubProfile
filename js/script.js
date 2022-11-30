@@ -1,24 +1,25 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", () => {
+function boot() {
+
+	const profileContainer = document.querySelector(".js-profile-container"),
+		loadRepos = document.querySelector(".js-load-repos-btn"),
+		reposTittle = document.querySelector(".js-repos-tittle"),
+		reposRow = document.querySelector(".js-repos-row"),
+		loadStatus = reposRow.querySelector(".js-spinner");
 
 	async function getResource(url) {
 		const res = await fetch(url);
-		
 		if (!res.ok) {
 			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-		} 
+		}
 		return await res.json();
 	}
 
-	getResource("https://api.github.com/users/nastyashul")
-		.then(data => createProfile(data));
 
-	function createProfile(data) {
-		console.log("profle data", data);
-		const profileContainer = document.querySelector(".my-profile__container");
+	function renderProfile(data) {
 		profileContainer.innerHTML = `
-		<h3 class="my-profile__name">${data.name}</h3>
+		<a href="https://github.com/${data.login}" class="my-profile__name">${data.name}</a>
 		<h4 class="my-profile__nickname">${data.login}</h4>
 		<h5 class="my-profile__role">${data.bio}</h5>
 		<div class="my-profile__contacts contacts">
@@ -35,43 +36,40 @@ document.addEventListener("DOMContentLoaded", () => {
 		`;
 	}
 
+	function renderRepos(data) {
+		console.log(data);
+		const dataForRepo = data.reduce((repos, item) => {
+			return repos += `
+				<div class="repos__item repo">
+					<a href="${item.clone_url}" class="repo__name">${item.name}</a>
+					<p>
+						<span class="repo__update">Last updated:</span>
+						<span class="repo__date">${new Date(item.updated_at).toLocaleDateString('en-EN', { day: 'numeric', month: 'long', year: 'numeric' }).replace(" y.", "")}</span>
+					</p>
+				</div>
+			`;
+		}, "")
+		reposRow.insertAdjacentHTML('afterbegin', dataForRepo);
+	}
 
-	const reposBtn = document.getElementById("load"),
-		reposTittle = document.querySelector(".repos__tittle"),
-		reposRow = document.querySelector(".repos__row"),
-		loadStatus = document.querySelector(".spinner"),
-		loading = document.querySelector(".spinner img");
 
-		reposBtn.addEventListener("click", () => {
-			loadStatus.src = loading;
-			reposRow.insertAdjacentElement("beforeBegin", loadStatus);
-			getResource("https://api.github.com/users/nastyashul/repos")
+	getResource("https://api.github.com/users/nastyashul")
+		.then(data => renderProfile(data));
+
+
+	loadRepos.addEventListener("click", () => {
+		loadStatus.classList.remove("hide");
+		getResource("https://api.github.com/users/nastyashul/repos")
 			.then(data => {
-				console.log(data);
-				return loadRepos(data);
+				return renderRepos(data);
 			})
-			.finally(() => {
-				reposBtn.classList.add("hide");
+			.then(() => {
 				reposTittle.classList.remove("hide");
+				loadRepos.classList.add("hide");
 				loadStatus.classList.add("hide");
 			})
-		});
+	});
 
+}
 
-	function loadRepos(data) {
-		const dataForRepo = data.map(item => {
-			const repoBlock = `
-			<div class="repos__item repo">
-				<h3 class="repo__name">${item.name}</h3>
-				<p>
-					<span class="repo__update">Last updated:</span>
-					<span class="repo__date">${new Date(item.updated_at).toLocaleDateString('en-EN', { day: 'numeric', month: 'long', year: 'numeric' }).replace(" y.", "")}</span>
-				</p>
-			</div>
-				`;
-			return repoBlock;
-		})
-		reposRow.insertAdjacentHTML('afterbegin', dataForRepo.join(' '));
-	}
-});
-
+document.addEventListener("DOMContentLoaded", boot);

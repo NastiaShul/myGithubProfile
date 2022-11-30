@@ -15,6 +15,13 @@ body{
 	box-sizing: content-box;
 }
 
+a{
+	&:hover{
+		text-decoration: underline;
+		color: #5894ee;
+	}
+}
+
 //********************************
 .header {
 	margin: 0 0 50px 0;
@@ -147,11 +154,6 @@ body{
 	&__date{
 	}
 }
-
 .hide{
 	display: none;
-}
-
-.active{
-	display: block;
 }
