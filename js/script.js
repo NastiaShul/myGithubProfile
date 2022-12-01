@@ -25,12 +25,12 @@ function boot() {
 		<div class="my-profile__contacts contacts">
 			<div class="contacts__email">
 				<img src="./img/email.svg" alt="email">
-				<a href="maito:${data.email}">${data.email}</a>
+				<a href="maito:${data.email || "–"}">${data.email || "–"}</a>
 			</div>
 			<div class="contacts__social">
 				<img src="./img/link.svg" alt="link">
-				<a href="https://www.l${data.blog}"
-					target="_blank">${data.blog}</a>
+				<a href="https://www.l${data.blog || "–"}"
+					target="_blank">${data.blog || "–"}</a>
 			</div >
 		</div >
 		`;
@@ -50,6 +50,9 @@ function boot() {
 			`;
 		}, "")
 		reposRow.insertAdjacentHTML('afterbegin', dataForRepo);
+		reposTittle.classList.remove("hide");
+		loadRepos.classList.add("hide");
+		loadStatus.classList.add("hide");
 	}
 
 
@@ -62,11 +65,6 @@ function boot() {
 		getResource("https://api.github.com/users/nastyashul/repos")
 			.then(data => {
 				return renderRepos(data);
-			})
-			.then(() => {
-				reposTittle.classList.remove("hide");
-				loadRepos.classList.add("hide");
-				loadStatus.classList.add("hide");
 			})
 	});
 
